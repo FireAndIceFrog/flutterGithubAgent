@@ -10,7 +10,7 @@ import '../../Repository/github_login_agent_repository.dart';
 
 
 typedef AuthenticatedBuilder = Widget Function(
-    BuildContext context, oauth2.Client client);
+    BuildContext context, WidgetRef ref, oauth2.Client client);
 
 class GithubLoginWidget extends HookConsumerWidget {
   const GithubLoginWidget({
@@ -33,7 +33,7 @@ class GithubLoginWidget extends HookConsumerWidget {
     final githubAgent = ref.watch(githubLoginAgentProvider);
 
     if (client.value != null) {
-      return authBuilder(context, client.value!);
+      return authBuilder(context, ref, client.value!);
     }
 
     return Scaffold(

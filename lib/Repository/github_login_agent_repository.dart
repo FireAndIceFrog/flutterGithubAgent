@@ -1,6 +1,7 @@
 
 import 'dart:io';
 
+import 'package:github/github.dart';
 import 'package:oauth2/oauth2.dart' as oauth2;
 import 'package:riverpod/riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -79,5 +80,9 @@ class GithubLoginAgent extends AGithubLoginAgent {
 }
 
 final githubLoginAgent = GithubLoginAgent();
-
 final githubLoginAgentProvider = Provider((ref) => githubLoginAgent.getProvider(ref));
+
+final githubLoginProvider = FutureProvider.family<CurrentUser, String>((ref, accessToken) async {
+  final gitHub = GitHub(auth: Authentication.withToken(accessToken));
+  return gitHub.users.getCurrentUser();
+});
