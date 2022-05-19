@@ -82,7 +82,4 @@ class GithubLoginAgent extends AGithubLoginAgent {
 final githubLoginAgent = GithubLoginAgent();
 final githubLoginAgentProvider = Provider((ref) => githubLoginAgent.getProvider(ref));
 
-final githubLoginProvider = FutureProvider.family<CurrentUser, String>((ref, accessToken) async {
-  final gitHub = GitHub(auth: Authentication.withToken(accessToken));
-  return gitHub.users.getCurrentUser();
-});
+final githubLoginProvider = StateProvider<GitHub?>((ref) => null);

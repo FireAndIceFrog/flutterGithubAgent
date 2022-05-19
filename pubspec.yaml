@@ -41,6 +41,12 @@ dependencies:
   oauth2: ^2.0.0
   url_launcher: ^6.1.2
   github: ^9.2.0
+  window_to_front:
+    git:
+      url: https://github.com/flutter/codelabs.git
+      ref: master
+      path: github-client/window_to_front
+  fluttericon: ^2.0.0
 
 dev_dependencies:
   flutter_test:
